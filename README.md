@@ -1,91 +1,115 @@
-# pypi-packages
-Python util functions
 
-`pip3 install coolmaproutepath` to install packages
+# **CoolMapRoutePath**
 
+A Python utility for calculating route paths, estimated travel times, and distances using Mapbox API.
 
-## What is it
+---
 
-Support for coolmap path,estimated_time and estimated distance.
-This module provides the path co-ordinate, estimated distance and estimated
-time to cover the distance based on there pick-up and delivery latitude and longitude.
+## **Installation**
 
+Install the package using pip:
 
-    CoolmapRoutePath(<from_lat_log>,<to_lat_log>,<map_box_api key> ))
+```bash
+pip install coolmaproutepath
+```
 
+---
 
+## **What is it?**
 
+`CoolMapRoutePath` is a utility module that supports:
+- Generating route paths (coordinates) between two locations.
+- Calculating estimated travel distances.
+- Calculating estimated travel times.
 
+The calculations are based on the latitude and longitude of the pick-up and delivery locations, powered by the Mapbox API.
 
-## Usage/Examples
+---
+
+## **Usage/Examples**
+
+### **Basic Usage**
+To use `CoolMapRoutePath`, instantiate the class with the following parameters:
+- **`from_lat_log`**: The starting latitude and longitude.
+- **`to_lat_log`**: The destination latitude and longitude.
+- **`map_box_api_key`**: Your Mapbox API key.
 
 ```python
 from coolmaproutepath import CoolmapRoutePath
 
-cool_obj = CoolmapRoutePath("38.24265,-76.56296","39.2262,-76.81595",<map_box_api key> ))
-
-
-
+# Example initialization
+cool_obj = CoolmapRoutePath("38.24265,-76.56296", "39.2262,-76.81595", "<your_map_box_api_key>")
 ```
-## Method to get the estimated time
+
+---
+
+### **Methods**
+
+#### **1. Get Estimated Time**
+
+Retrieve the estimated travel time between locations in various units:
+- **`s`**: Seconds
+- **`m`**: Minutes
+- **`h`**: Hours
 
 ```python
-cool_obj.estimated_time(required_unit='m')
+# Example: Get estimated time in seconds
+time_in_seconds = cool_obj.estimated_time(required_unit='s')
+print(time_in_seconds)  # Output: '6656.05 Seconds'
 ```
-     
-        "m" - Return the estimated time in Minuted
-        "h" - Return the estimated time in Hour
-        "s" - Reeturn the estimated time in Second
 
+---
 
-Example:
-    
-    Input:
+#### **2. Get Estimated Distance**
 
-    >>CoolMapRoutePth_Obj>.estimated_time('s')
-
-    Output:
-
-    >>'6656.05 Second'
-
-
-## Method to get the estimated distance
+Retrieve the estimated travel distance between locations in various units:
+- **`m`**: Miles
+- **`k`**: Kilometers
+- **`n`**: Nautical Miles
+- **`t`**: Meters
 
 ```python
-cool_obj.estimated_distance(required_unit='m')
+# Example: Get estimated distance in meters
+distance_in_meters = cool_obj.estimated_distance(required_unit='t')
+print(distance_in_meters)  # Output: '144062.0 Meters'
 ```
-     
-        "m" - REturn the distance time in Miles
-        "k" - Return the distance time in Kilometer
-        "n" - Reeturn the distance time in Nautical Mile
-        "t" - Reeturn the distance time in Meter
 
+---
 
-Example:
-    
-    Input:
+#### **3. Get Route Path**
 
-    >>cool_obj.estimated_distance('t')
-
-    Output:
-
-    >>'144062.0 Meter'
-
-
-## Method to get the path
+Retrieve the route path as a series of coordinates.
 
 ```python
-cool_obj.get_path()
+# Example: Get the route path
+route_path = cool_obj.get_path()
+print(route_path)  # Output: '38.242287,-76.56314400000001;38.242289,-76.563149;...'
 ```
 
+---
 
-Example:
-    
-    Input:
+## **Features**
+- **Simple API** for route, distance, and time estimation.
+- **Customizable Units** for time and distance.
+- Powered by **Mapbox API** for accurate route information.
 
-    >>cool_obj.get_path('t')
+---
 
-    Output:
+## **Requirements**
+- Python 3.6+
+- Mapbox API Key (sign up at [Mapbox](https://www.mapbox.com/))
 
-    >>'38.242287,-76.56314400000001;38.242289,-76.563149;...'
+---
 
+## **Installation Dependencies**
+Make sure to install the required dependencies listed in the `requirements.txt` file. These are automatically installed with the package.
+
+---
+
+## **Contributing**
+We welcome contributions! Feel free to fork the repository and submit a pull request for additional features or improvements.
+
+---
+
+## **License**
+This project is licensed under the MIT License. See the `LICENSE` file for details.
